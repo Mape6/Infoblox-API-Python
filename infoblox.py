@@ -22,7 +22,6 @@
 
 # Additions/alterations by
 # Martin Pechstein
-# 77325495+Mape6@users.noreply.github.com
 # 2021
 
 import re
@@ -785,6 +784,7 @@ class Infoblox(object):
         """ IBA REST API call to retreive a host object by MAC address
         Returns a record:host type list
         :param mac: MAC address (string)
+        :param attributes: not used currently
         """
         rest_url = 'https://' + self.iba_host + '/wapi/v' + self.iba_wapi_version + \
             '/record:host?mac=' + mac + '&view=' + \
@@ -1372,7 +1372,7 @@ class Infoblox(object):
             raise Exception(r)
         except Exception:
             raise
-        if(len(r_json) > 0):
+        if len(r_json) > 0:
             return r_json
 
     def get_lease_by_ip(self,client_ip):
@@ -1386,7 +1386,7 @@ class Infoblox(object):
             raise Exception(r)
         except Exception:
             raise
-        if(len(r_json) > 0):
+        if len(r_json) > 0:
             return r_json
 
     def get_leaseip_by_mac(self,client_mac):
@@ -1400,7 +1400,7 @@ class Infoblox(object):
             raise Exception(r)
         except Exception:
             raise
-        if(len(r_json) > 0):
+        if len(r_json) > 0:
             return r_json
 
     def query_record(self, record_type, fields=None, **kwargs):
@@ -1408,7 +1408,7 @@ class Infoblox(object):
         if fields:
             kwargs['_return_fields'] = fields
 
-        params = '&'.join(['{}={}'.format(k,v) for k,v in kwargs.iteritems()])
+        params = '&'.join(['{}={}'.format(k,v) for k,v in kwargs.items()])
 
         rest_url += params
 
