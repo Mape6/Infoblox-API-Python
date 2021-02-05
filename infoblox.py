@@ -111,7 +111,7 @@ class Infoblox(object):
         self.iba_network_view = iba_network_view
         self.iba_verify_ssl = iba_verify_ssl
 
-    def add_view(self,arg):
+    def add_view(self, arg):
         """ Stupid helper function to add &view= to URL requests that want one
         """
         return arg + '&view=' + self.iba_dns_view
@@ -1361,7 +1361,7 @@ class Infoblox(object):
 ### DHCP functions.
 ### Bug? Getting cltt information only works with dynamic IPs, not static reservations.
 
-    def get_lease_cltt_by_hostname(self,client_hostname):
+    def get_lease_cltt_by_hostname(self, client_hostname):
         rest_url = 'https://' + self.iba_host + '/wapi/v' + \
             self.iba_wapi_version + '/lease?_return_fields=cltt&client_hostname~=' + client_hostname
         try:
@@ -1375,7 +1375,7 @@ class Infoblox(object):
         if len(r_json) > 0:
             return r_json
 
-    def get_lease_by_ip(self,client_ip):
+    def get_lease_by_ip(self, client_ip):
         rest_url = 'https://' + self.iba_host + '/wapi/v' + \
             self.iba_wapi_version + '/lease?_return_fields=cltt&address=' + client_ip
         try:
@@ -1389,7 +1389,7 @@ class Infoblox(object):
         if len(r_json) > 0:
             return r_json
 
-    def get_leaseip_by_mac(self,client_mac):
+    def get_leaseip_by_mac(self, client_mac):
         rest_url = 'https://' + self.iba_host + '/wapi/v' + \
             self.iba_wapi_version + '/search?search_string:=' + client_mac
         try:
